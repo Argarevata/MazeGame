@@ -1200,11 +1200,11 @@ Transform:
   - {fileID: 677223734}
   - {fileID: 599195777}
   - {fileID: 103611736}
-  - {fileID: 595255974}
   - {fileID: 695736973}
+  - {fileID: 595255974}
   - {fileID: 996291782}
-  - {fileID: 1884923226}
   - {fileID: 761397400}
+  - {fileID: 1884923226}
   - {fileID: 321953394}
   - {fileID: 14967444}
   - {fileID: 93187757}
@@ -1557,7 +1557,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 15
+  orthographic size: 17
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
