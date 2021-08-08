@@ -7,7 +7,7 @@ public class UIManager : MonoBehaviour
 {
     public Button[] levelButton;
     public bool inMainMenu;
-    public Toggle jumpScareToggle;
+    public Toggle jumpScareToggle, soundToggle;
     public int usingJump;
 
     private void Awake()
@@ -19,7 +19,9 @@ public class UIManager : MonoBehaviour
             PlayerPrefs.SetInt("version", 1);
 
             jumpScareToggle.isOn = true;
+            soundToggle.isOn = true;
             PlayerPrefs.SetInt("jumpscare", 1);
+            PlayerPrefs.SetInt("sound", 1);
         }
     }
 
@@ -29,6 +31,7 @@ public class UIManager : MonoBehaviour
 
         if (inMainMenu)
         {
+            Time.timeScale = 1;
             for (int i = 0; i < PlayerPrefs.GetInt("level"); i++)
             {
                 levelButton[i].interactable = true;
@@ -50,6 +53,32 @@ public class UIManager : MonoBehaviour
                     PlayerPrefs.SetInt("jumpscare", 0);
                 }
             }
+
+            if (PlayerPrefs.GetInt("sound") == 1)
+            {
+                if (!soundToggle.isOn)
+                {
+                    soundToggle.isOn = true;
+                    PlayerPrefs.SetInt("jumpscare", 1);
+                }
+            }
+            else
+            {
+                if (soundToggle.isOn)
+                {
+                    soundToggle.isOn = false;
+                    PlayerPrefs.SetInt("sound", 0);
+                }
+            }
+        }
+
+        if (PlayerPrefs.GetInt("sound") == 1)
+        {
+            AudioListener.volume = 1;
+        }
+        else
+        {
+            AudioListener.volume = 0;
         }
     }
 
@@ -72,6 +101,20 @@ public class UIManager : MonoBehaviour
         else 
         {
             PlayerPrefs.SetInt("jumpscare", 0);
+        }
+    }
+
+    public void ChangeSoundValue()
+    {
+        if (PlayerPrefs.GetInt("sound") == 0)
+        {
+            PlayerPrefs.SetInt("sound", 1);
+            AudioListener.volume = 1;
+        }
+        else
+        {
+            PlayerPrefs.SetInt("sound", 0);
+            AudioListener.volume = 0;
         }
     }
 

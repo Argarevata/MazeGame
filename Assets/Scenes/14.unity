@@ -1680,7 +1680,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 25
+  orthographic size: 30
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3394,6 +3394,7 @@ MonoBehaviour:
   levelButton: []
   inMainMenu: 0
   jumpScareToggle: {fileID: 0}
+  soundToggle: {fileID: 0}
   usingJump: 0
 --- !u!1 &1231585977
 GameObject:

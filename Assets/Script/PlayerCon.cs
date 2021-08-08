@@ -11,6 +11,8 @@ public class PlayerCon : MonoBehaviour {
 	public int useJumpScare;
 	public AudioSource bgm, winSFX, loseSFX, screamSFX;
 
+	public BoxCollider2D myColl;
+
 	//PLAYERPREFS
 	// - jumpscare int 1 == withJumpscare   0 == NoJumpscare
 	// - level   level yg sudah diunlock START WITH 0
@@ -20,6 +22,8 @@ public class PlayerCon : MonoBehaviour {
 		myBody = GetComponent<Rigidbody2D> ();
 		joy = FindObjectOfType<JoystickCon> ();
 		useJumpScare = PlayerPrefs.GetInt("jumpscare");
+
+		myColl = GetComponent<BoxCollider2D>();
 	}
 	
 	void Update () {
@@ -28,13 +32,15 @@ public class PlayerCon : MonoBehaviour {
 
 		if (Input.GetKeyDown(KeyCode.X))
 		{
-			if (useJumpScare == 0)
+			if (myColl.enabled)
 			{
-				useJumpScare = 1;
+				myColl.enabled = false;
+				speed *= 3;
 			}
 			else
 			{
-				useJumpScare = 0;
+				myColl.enabled = true;
+				speed /= 3;
 			}
 		}
 	}
